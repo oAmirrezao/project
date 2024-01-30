@@ -109,6 +109,8 @@ public class BookStoreHomePage extends JFrame implements ActionListener {
             // You can use a JTable to display the cart items
             // You can also add buttons for removing items or checking out
         } else if (e.getSource() == login) {
+            setVisible(false);
+            LoginMenu.getLoginMenu().setVisible(true);
             // Create a new frame for logging in
             // You can use a JTextField and a JPasswordField to get the user credentials
             // You can also add a button for logging in or a link for registering

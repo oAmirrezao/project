@@ -51,4 +51,12 @@ public abstract class User {
         }
     }
 
+    public static User isUserExist(String username, String password) {
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).username.equals(username) && usersList.get(i).password.equals(password))
+                return userList.get(i);
+        }
+        return null;
+    }
+
 }

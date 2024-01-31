@@ -1,7 +1,7 @@
 import java.util.*;
 public abstract class User {
+    // features of a user
     public static User currentUser;
-    static public ArrayList<User> userList;
     static private final ArrayList<User> usersList = new ArrayList<>();
     protected ArrayList<Book> books;
     private long inventory;
@@ -9,9 +9,9 @@ public abstract class User {
     private final String password;
     private final String email;
     private final String phoneNumber;
-    private Cart[] history;
     public String role;
-
+    // constructor of the class
+    // conditions to validate a user is implemented in signup class
     public User(String username, String password, String email, String phoneNumber) {
             this.username = username;
             this.password = password;
@@ -20,6 +20,8 @@ public abstract class User {
             usersList.add(this);
     }
 
+
+    // checks if we had such a user before or not
     public static boolean isUniqueUsername(String username) {
         for(User user: usersList) {
             if (user.username.equals(username))
@@ -27,19 +29,23 @@ public abstract class User {
         }
         return true;
     }
+
+    // checks if a password is strong enough or not
     boolean isStrongPassword(String password) {
         String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
         return password.matches(regex);
     }
 
+    // checks if the email address is valid
     boolean validateEmail(String email) {
         String regex = "^(.+)@(.+)$";
         return email.matches(regex);
     }
-
+    // function to change the inventory of a user
     public void changeInventory(long increaseValue) {
         inventory += increaseValue;
     }
+    // when we want to delete a book this function will be execute
     public void deleteBook(Book book) {
         if (!books.isEmpty()) {
             for (int i = 0; i < books.size(); i++) {

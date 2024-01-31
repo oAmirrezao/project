@@ -1,9 +1,14 @@
 import java.util.*;
+
+// this class extends the User class
+// means each object of this class is a User
 public class Customer extends User{
     ArrayList<Category> favouriteCategories = new ArrayList<Category>();
     String discountCode;
 
     public Customer(String username, String password, String e_mail, String phoneNumber) {
+        // super class constructor must be call first in the constructor
+        // otherwise we will get a compilation error
         super(username, password, e_mail, phoneNumber);
         this.role = "customer";
         currentUser = this;
@@ -14,7 +19,7 @@ public class Customer extends User{
         for (Book book : Book.books) {
             // TODO instance of must be checked if works correct
             if (book.getOwner() instanceof Seller firstOwner && book.getTitle().equalsIgnoreCase(bookTitle)) {
-                // TODO an important part of program must be completed
+                // when a customer buys a book this must be execute
                 this.changeInventory(-book.getPrice());
                 book.setOwner(this);
                 firstOwner.books.remove(book);
@@ -24,6 +29,7 @@ public class Customer extends User{
     }
 
 
+    // this function add categories which this customer likes them
     private void addFavouriteCategory(Category category) {
         this.favouriteCategories.add(category);
     }
